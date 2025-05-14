@@ -2,7 +2,7 @@
 
 # Installing packages
 
-apt-get install -y chrony nginx
+apt-get install -y chron
 
 # Chrony
 systemctl enable --now chronyd
