@@ -23,3 +23,20 @@ sudo iptables -A FORWARD -p tcp -d 192.168.100.2 --dport 2024 -j ACCEPT
 
 # Nginx
 
+cat <<EOF> /etc/nginx/sites-available/proxy.conf
+server {
+    listen 80;
+    server_name moodle.au-team.irpo;
+
+    location / {
+        proxy_pass http://192.168.100.2:8080;
+    }
+}
+server {
+    listen 80;
+    server_name wiki.au-team.irpo;
+
+    location / {
+        proxy_pass http://192.168.2.10:80;
+    }
+}
