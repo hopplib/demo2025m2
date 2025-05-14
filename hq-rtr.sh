@@ -29,7 +29,7 @@ server {
     server_name moodle.au-team.irpo;
 
     location / {
-        proxy_pass http://192.168.100.2:8080;
+        proxy_pass http://192.168.100.2:80;
     }
 }
 server {
@@ -37,7 +37,7 @@ server {
     server_name wiki.au-team.irpo;
 
     location / {
-        proxy_pass http://192.168.2.10:80;
+        proxy_pass http://192.168.2.10:8080;
     }
 }
 EOF
