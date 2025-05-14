@@ -5,6 +5,8 @@
 apt-get install -y chrony nginx
 
 # Chrony
+systemctl enable --now chronyd
+
 echo "allow 172.16.4.2 iburst" >> /etc/chrony.conf
 
 systemctl restart chronyd
