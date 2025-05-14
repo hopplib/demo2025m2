@@ -48,7 +48,7 @@ services:
     image: mediawiki:latest
     container_name: wiki
     ports:
-     -8080:80
+     - 8080:80
     links:
      - datebase
     volumes:
