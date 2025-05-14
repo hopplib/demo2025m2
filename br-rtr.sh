@@ -5,16 +5,7 @@
 apt-get install -y chrony nginx
 
 # Chrony
-
-systemctl enable chronyd --now
-
-cat <<EOF >> /etc/chrony.conf
-allow 192.168.100.0/29
-allow 192.168.200.0/29
-allow 172.16.4.0/28
-allow 192.168.3.0/29
-local stratum 5
-EOF
+echo "allow 172.16.4.2 iburst" >> /etc/chrony.conf
 
 systemctl restart chronyd
 
@@ -23,5 +14,3 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168
 iptables -t nat -A PREROUTING -p tcp --dport 2024 -j DNAT --to-destination 192.168.3.2:2024
 iptables -A FORWARD -p tcp -d 192.168.3.2 --dport 8080 -j ACCEPT
 iptables -A FORWARD -p tcp -d 192.168.3.2 --dport 2024 -j ACCEPT
-
-
