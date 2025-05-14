@@ -16,4 +16,10 @@ EOF
 
 systemctl restart chronyd
 
+# DNAT
+
+iptables -t nat -A PREROUTING -p tcp --dport 2024 -j DNAT --to-destination 192.168.100.2:2024
+sudo iptables -A FORWARD -p tcp -d 192.168.100.2 --dport 2024 -j ACCEPT
+
 # Nginx
+
