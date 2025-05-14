@@ -40,3 +40,6 @@ server {
         proxy_pass http://192.168.2.10:80;
     }
 }
+EOF
+nginx -t
+systemctl restart nginx
